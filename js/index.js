@@ -2,7 +2,7 @@
 let btnSignOut = document.getElementsByClassName("signout")[0];
 let btnSignIn = document.getElementsByClassName("container__btn--signin")[0];
 let btnSignUp = document.getElementsByClassName("container__btn--signup")[0];
-
+let btnGoogleSignIn = document.getElementsByClassName("google__signin")[0];
 let btnFormSignIn = document.getElementsByClassName(
   "container__form--btn--signin"
 )[0];
@@ -92,10 +92,11 @@ btnFormSignUp.addEventListener("click", e => {
   signUp(e);
 });
 btnFormSignIn.addEventListener("click", e => {
-  signInGoogle();
-  //logIn(e);
+  logIn(e);
 });
-
+btnGoogleSignIn.addEventListener("click", () => {
+  signInGoogle();
+});
 let errorMessages = [...document.getElementsByClassName("error")];
 
 btnSignOut.addEventListener("click", () => {

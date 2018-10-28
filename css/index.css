@@ -446,3 +446,24 @@ input {
 .error {
   margin: 2px 0;
 }
+
+.google__signin {
+  border: 1px solid lightslategray;
+  width: 40px;
+  height: 40px;
+  margin: 5px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.google__signin img {
+  width: 40px;
+  height: 40px;
+  background-image: url("./assets/images/google.png");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.google__signin:hover {
+  background-color: var(--color-main-text);
+}
