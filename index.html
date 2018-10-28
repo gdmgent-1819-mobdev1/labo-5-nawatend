@@ -5,15 +5,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,450,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/index.css">
     <title>Project CoCo</title>
 </head>
 
 <body>
+    <div class="wrapper">
+        <div class="box__bg"></div>
+        <div class="container__signin">
+            <div class="welcome">
+                <p class='text__BoldWhite'>Welcome Back</p>
+                <p class='text__LightWhite'>To keep connected with us please login with your e-mail and password</p>
+            </div>
+            <div class="container__btn--signin start--btn btn__Text--white">Sign In</div>
+        </div>
+
+        <div class="container__signup">
+            <div class="welcome">
+                <p class='text__BoldWhite'>Hi Friend!</p>
+                <p class='text__LightWhite'>Enter your personal details and start with <strong>Project Coco</strong></p>
+            </div>
+            <div class="container__btn--signup start--btn btn__Text--white">
+                Sign up
+            </div>
+        </div>
+        <!-- <div class="container container__signup"></div> -->
+
+        <div class="container__signup--form form">
+            <div class="form__inside">
+                <p class="text__BoldGreen ">Create Account</p>
+                <p class="text__LightGrey">Use your e-mail</p>
+                <input type="text" id="signup_name" class="inputsignup" placeholder="Name" required>
+                <input type="email" id="signup_email" class="inputsignup" placeholder="E-mail" required>
+                <input type="password" id="signup_password" class="inputsignup" placeholder="Password" required>
+            </div>
+            <div class="container__form--btn--signup form--btn btn__Text--white">
+                <div class="signup__text">Sign Up</div>
+            </div>
+
+            <div id="signup_error" class="error"></div>
+        </div>
 
 
+        <div class="container__signin--form form">
+            <div class="form__inside">
+                <p class="text__BoldGreen ">Sign In Project Coco</p>
+                <p class="text__LightGrey">Use your e-mail</p>
 
-    <script src="/js/index.js"></script>
+                <input type="email" id="signin_email" class="inputsignin" placeholder="E-mail" required>
+                <input type="password" id="signin_password" class="inputsignin" placeholder="Password" required>
+            </div>
+            <div class="container__form--btn--signin form--btn btn__Text--white">Sign In</div>
+            <div id="signin_error" class="error"></div>
+        </div>
+
+
+        <div class="container__blog">
+
+
+            <div id='editor'>
+                <div class="signin__username"></div>
+                <div class="container__title"><label class="text__BoldWhite " for="title">Title</label>
+                    <input type="text" name="title" id="title" class="text__LightGreen"></div>
+
+                <textarea name="editor1" id="editor1" rows="10" cols="50">
+                      Blogpost content goes here!
+                    </textarea><br>
+                <div class="editor__btns">
+                    <div class="signout start--btn">Sign Out</div>
+                    <div class="start--btn" id="btn_publish">Publish post</div>
+
+                </div>
+                <p class="error" id="errors"></p>
+            </div>
+            <div id='blog__posts'></div>
+        </div>
+
+
+    </div>
+
 </body>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script src="js/firebaseini.js"></script>
+
+<script src="js/ckeditor/ckeditor.js"></script>
+<script src="js/blogpost.js"></script>
+<script src="js/index.js"></script>
 
 </html>
