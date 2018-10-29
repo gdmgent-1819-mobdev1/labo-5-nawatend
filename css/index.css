@@ -448,10 +448,10 @@ input {
 }
 
 .google__signin {
-  border: 1px solid lightslategray;
+  border: 1px solid lightgrey;
   width: 40px;
   height: 40px;
-  margin: 5px 30px;
+  margin: 2px 40px;
   border-radius: 50px;
   cursor: pointer;
 }
@@ -465,5 +465,5 @@ input {
 }
 
 .google__signin:hover {
-  background-color: var(--color-main-text);
+  border: 1px solid var(--color-main-text);
 }

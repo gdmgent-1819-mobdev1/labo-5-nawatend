@@ -119,7 +119,7 @@ function sendVerificationEmail(user) {
     });
 }
 
-//Only works with https, https, chrome extension
+//Only works with https, https, chrome
 function signInGoogle() {
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase
