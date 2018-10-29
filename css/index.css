@@ -459,9 +459,6 @@ input {
 .google__signin img {
   width: 40px;
   height: 40px;
-  background-image: url("./assets/images/google.png");
-  background-attachment: fixed;
-  background-size: cover;
 }
 
 .google__signin:hover {
