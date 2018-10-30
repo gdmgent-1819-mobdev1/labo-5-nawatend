@@ -382,6 +382,7 @@ input {
 
 .blogpost {
   margin: 10px;
+  border-bottom: 1px solid #c7c4c4;
 }
 .blogpost p {
   margin: 0;

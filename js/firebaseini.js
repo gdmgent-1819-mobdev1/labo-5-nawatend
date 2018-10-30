@@ -40,11 +40,27 @@ function signUp(e) {
 
   let email = document.getElementById("signup_email").value;
   let password = document.getElementById("signup_password").value;
-  let displayName = document.getElementById("signup_name");
+  let userName = document.getElementById("signup_name").value;
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
+
     .then(function(response) {
+      firebase
+        .auth()
+        .currentUser.updateProfile({
+          displayName: userName
+        })
+        .then(
+          function() {
+            // Update successful.
+            console.log("DisplayName succsess: " + response.displayName);
+          },
+          function(error) {
+            // An error happened.
+            console.log(error + " DisplayName");
+          }
+        );
       sendNotification(
         "Thanks for signing up to our website! Check your e-mail for account verification!"
       );
@@ -78,7 +94,8 @@ function logIn(e) {
       sendNotification("You are now logged in successfully!");
       showUserInfo(response.user);
       console.log("success sign in");
-      SuccessSignedIn();
+      // This  get displayName
+      SuccessSignedIn(response.user.displayName);
     })
     .catch(function(error) {
       // Handle Errors here.
@@ -97,7 +114,7 @@ function signOut() {
     .signOut()
     .then(
       function() {
-        console.log("Signed Out");
+        sendNotification("You are sign out!");
       },
       function(error) {
         console.error("Sign Out Error", error);
@@ -131,7 +148,7 @@ function signInGoogle() {
       // The signed-in user info.
       var user = result.user;
       // ...
-      console.log("Success: Linked with Google");
+      sendNotification("You are now logged in successfully with Google!");
     })
     .catch(function(error) {
       // Handle Errors here.

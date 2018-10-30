@@ -83,7 +83,7 @@ SignUpMode = () => {
 //notification permission
 requestNotificationPermission();
 //things happen with success signed in
-SuccessSignedIn = (userName = "Default Name") => {
+SuccessSignedIn = userName => {
   signInnedUsername.textContent = userName;
   containerBlog.style.visibility = "visible";
 };
