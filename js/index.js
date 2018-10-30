@@ -9,8 +9,11 @@ let btnFormSignIn = document.getElementsByClassName(
 let btnFormSignUp = document.getElementsByClassName(
   "container__form--btn--signup"
 )[0];
+let btnsJustRead = [...document.getElementsByClassName("justread")];
+let btnPublish = document.getElementById("btn_publish");
+// Containersd
 
-// Containers
+let containerEditor = document.getElementById("editor");
 let containerFormSignIn = document.getElementsByClassName(
   "container__signin--form"
 )[0];
@@ -97,6 +100,11 @@ btnFormSignIn.addEventListener("click", e => {
 btnGoogleSignIn.addEventListener("click", () => {
   signInGoogle();
 });
+
+btnsJustRead.forEach(btn => {
+  anonymousMode(btn);
+});
+
 let errorMessages = [...document.getElementsByClassName("error")];
 
 btnSignOut.addEventListener("click", () => {
@@ -106,4 +114,18 @@ btnSignOut.addEventListener("click", () => {
   errorMessages.forEach(error => {
     error.textContent = "";
   });
+
+  document.getElementById("title").classList.remove("disabled");
+  document.getElementById("cke_editor1").classList.remove("disabled");
+  btnPublish.classList.remove("disabled");
 });
+
+function anonymousMode(btn) {
+  btn.addEventListener("click", () => {
+    SuccessSignedIn("Anonymous");
+
+    document.getElementById("title").classList.add("disabled");
+    document.getElementById("cke_editor1").classList.add("disabled");
+    btnPublish.classList.add("disabled");
+  });
+}
