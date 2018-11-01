@@ -475,6 +475,7 @@ input {
   padding: 5px;
   border-top: 2px solid #c7c4c4;
   cursor: pointer;
+  margin: 2px 100px;
 }
 
 .disabled {
