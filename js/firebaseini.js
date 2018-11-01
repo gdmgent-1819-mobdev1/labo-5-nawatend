@@ -115,6 +115,7 @@ function signOut() {
     .then(
       function() {
         sendNotification("You are sign out!");
+        document.getElementById("signin_password").value = "";
       },
       function(error) {
         console.error("Sign Out Error", error);

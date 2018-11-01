@@ -17,22 +17,25 @@
 // Create new Post
 function publishPost(e) {
   e.preventDefault();
+
   let authorName = firebase.auth().currentUser.displayName;
   let title = document.getElementById("title").value;
   let content = CKEDITOR.instances.editor1.getData();
   let datetime = new Date().toLocaleString();
-
-  firebase
-    .database()
-    .ref("posts/")
-    .push({
-      author: authorName,
-      title: title,
-      content: content,
-      publishedOn: datetime
-    });
-
-  sendNotification("Publish Success!");
+  if (title !== "" && content !== "") {
+    firebase
+      .database()
+      .ref("posts/")
+      .push({
+        author: authorName,
+        title: title,
+        content: content,
+        publishedOn: datetime
+      });
+    sendNotification("Publish Success!");
+  } else {
+    sendNotification("Failed To Publish, Fill title and body");
+  }
 }
 // SHow all post blogs
 function showPost(post) {
