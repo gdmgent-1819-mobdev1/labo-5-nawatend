@@ -468,14 +468,13 @@ input {
 }
 
 .justread {
-  margin-top: 5px;
   font-weight: bold;
   text-transform: capitalize;
   color: var(--color-main-text);
   padding: 5px;
   border-top: 2px solid #c7c4c4;
   cursor: pointer;
-  margin: 2px 100px;
+  margin: 5px 100px;
 }
 
 .disabled {
