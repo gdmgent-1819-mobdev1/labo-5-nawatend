@@ -80,14 +80,15 @@ function showPost(post) {
     "</p>" +
     "<div class='blog__content'>" +
     post.content +
-    post.uid +
-    post.postid +
     "</div>";
   if (loggedIn) {
     if (post.uid === firebase.auth().currentUser.uid) {
       elem.innerHTML += `<div class='blog__edit' post-id='${
         post.postid
       }'>Edit</div>`;
+      elem.innerHTML += `<div class='blog__delete' post-id='${
+        post.postid
+      }'>X</div>`;
     }
   }
 
@@ -105,7 +106,19 @@ function editPost(postid) {
     CKEDITOR.instances.editor1.setData(snapshot.val().content);
   });
 }
-
+function deletePost(postid) {
+  var ref = firebase.database().ref("posts/");
+  ref
+    .orderByChild("postid")
+    .equalTo(postid)
+    .once("value")
+    .then(function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        //remove each child
+        ref.child(childSnapshot.key).remove();
+      });
+    });
+}
 DoneEditAndPublish = e => {
   //update data with same postID
 

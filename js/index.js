@@ -148,12 +148,22 @@ function anonymousMode(btn) {
 
 // Event Listeners -- editing post
 document.addEventListener("click", e => {
+  //edit post
   if (event.target) {
     if (event.target.classList.contains("blog__edit")) {
       editMode = true;
       let postID = event.target.getAttribute("post-id");
       currentPostID = postID;
       editPost(postID);
+    }
+  }
+
+  //deleting post
+  if (event.target) {
+    if (event.target.classList.contains("blog__delete")) {
+      let postID = event.target.getAttribute("post-id");
+      currentPostID = postID;
+      deletePost(postID);
     }
   }
 });
