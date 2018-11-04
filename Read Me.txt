@@ -1,0 +1,7 @@
+Recommended to open in Dev Firefox. 
+
+To able to sign in with Google, use live server 
+
+or Go to this link.
+
+https://gdmgent-1819-mobdev1.github.io/labo-5-nawatend/

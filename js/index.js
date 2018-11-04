@@ -106,13 +106,13 @@ btnGoogleSignIn.addEventListener("click", () => {
 
 btnsJustRead.forEach(btn => {
   anonymousMode(btn);
-  readPosts();
 });
 
 let errorMessages = [...document.getElementsByClassName("error")];
 
 btnSignOut.addEventListener("click", () => {
   signOut();
+  loggedIn = false;
   containerBlog.style.visibility = "hidden";
   //remove all error messages when signout
   errorMessages.forEach(error => {
@@ -139,7 +139,7 @@ btnForgottenPassword.addEventListener("click", () => {
 function anonymousMode(btn) {
   btn.addEventListener("click", () => {
     SuccessSignedIn("Anonymous");
-
+    readPosts();
     document.getElementById("title").classList.add("disabled");
     document.getElementById("cke_editor1").classList.add("disabled");
     btnPublish.classList.add("disabled");

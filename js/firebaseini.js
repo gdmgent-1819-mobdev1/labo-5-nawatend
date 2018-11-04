@@ -167,6 +167,8 @@ function signInGoogle() {
       var credential = error.credential;
       // ...
       console.log(errorCode + " == " + errorMessage);
+      document.getElementById("signin_error").innerHTML =
+        errorCode + " - " + errorMessage;
     });
 
   //   firebase.auth().signInWithRedirect(provider);
