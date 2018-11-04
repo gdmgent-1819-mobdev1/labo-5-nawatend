@@ -11,6 +11,9 @@ let btnFormSignUp = document.getElementsByClassName(
 )[0];
 let btnsJustRead = [...document.getElementsByClassName("justread")];
 let btnPublish = document.getElementById("btn_publish");
+
+let btnForgottenPassword = document.getElementsByClassName("forgotpassword")[0];
+
 // Containersd
 
 let containerEditor = document.getElementById("editor");
@@ -103,6 +106,7 @@ btnGoogleSignIn.addEventListener("click", () => {
 
 btnsJustRead.forEach(btn => {
   anonymousMode(btn);
+  readPosts();
 });
 
 let errorMessages = [...document.getElementsByClassName("error")];
@@ -120,6 +124,18 @@ btnSignOut.addEventListener("click", () => {
   btnPublish.classList.remove("disabled");
 });
 
+btnForgottenPassword.addEventListener("click", () => {
+  forgottenPasswordHandle(document.getElementById("signin_email").value);
+});
+
+// btnsEditPost.forEach(btnEdit => {
+//   btnEdit.addEventListener("click", () => {
+//     let postID = this.parentNode.getAttribute("post-id");
+//     console.log(postID);
+//     console.log("clicked");
+//   });
+// });
+
 function anonymousMode(btn) {
   btn.addEventListener("click", () => {
     SuccessSignedIn("Anonymous");
@@ -129,3 +145,15 @@ function anonymousMode(btn) {
     btnPublish.classList.add("disabled");
   });
 }
+
+// Event Listeners -- editing post
+document.addEventListener("click", e => {
+  if (event.target) {
+    if (event.target.classList.contains("blog__edit")) {
+      editMode = true;
+      let postID = event.target.getAttribute("post-id");
+      currentPostID = postID;
+      editPost(postID);
+    }
+  }
+});

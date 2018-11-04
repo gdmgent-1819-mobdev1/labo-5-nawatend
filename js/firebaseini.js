@@ -1,3 +1,5 @@
+let loggedIn = false;
+
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyCulHzfI4IXS2Zj-fyO1ZjY9iK1ray85LU",
@@ -8,6 +10,7 @@ var config = {
   messagingSenderId: "686607252871"
 };
 firebase.initializeApp(config);
+//for editing
 
 //request Permission to user Notification
 function requestNotificationPermission() {
@@ -49,6 +52,7 @@ function signUp(e) {
       firebase
         .auth()
         .currentUser.updateProfile({
+          //adding user name to profile
           displayName: userName
         })
         .then(
@@ -94,8 +98,10 @@ function logIn(e) {
       sendNotification("You are now logged in successfully!");
       showUserInfo(response.user);
       console.log("success sign in");
+      loggedIn = true;
       // This  get displayName
       SuccessSignedIn(response.user.displayName);
+      readPosts();
     })
     .catch(function(error) {
       // Handle Errors here.
@@ -170,3 +176,20 @@ function showUserInfo(user) {
   //   document.getElementById("user_info").innerHTML =
   //     "<h1> Welcome " + user.email + " ! </h1>";
 }
+forgottenPasswordHandle = email => {
+  let auth = firebase.auth();
+
+  auth
+    .sendPasswordResetEmail(email)
+    .then(function() {
+      sendNotification("Password Recovery: Check E-mail");
+    })
+    .catch(function(error) {
+      // Handle Errors here.
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      // An error happened.
+      document.getElementById("signin_error").innerHTML =
+        errorCode + " - " + errorMessage;
+    });
+};
