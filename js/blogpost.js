@@ -20,6 +20,7 @@ function readPosts() {
 
   blogpostRef.on("value", function(snapshot) {
     document.getElementById("blog__posts").innerHTML = "";
+
     snapshot.forEach(function(data) {
       showPost(data.val());
     });
@@ -93,7 +94,11 @@ function showPost(post) {
   }
 
   //<i class='fas fa-edit'></i></div>
-  document.getElementById("blog__posts").appendChild(elem);
+  // document.getElementById("blog__posts").appendChild(elem);
+
+  document
+    .getElementById("blog__posts")
+    .insertBefore(elem, document.getElementById("blog__posts").firstChild);
 }
 
 //Edit your own post
